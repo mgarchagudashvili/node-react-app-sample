@@ -1,0 +1,16 @@
+nav li {
+    float: left;
+    margin-right: 20px;
+}
+.content-block {
+    display: flex;
+    padding: 20px;
+}
+
+.form-group {
+    margin: auto;
+}
+
+input {
+    margin-bottom: 10px;
+}
