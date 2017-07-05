@@ -17,7 +17,7 @@ module.exports = {
     },
     password: {
         type: String,
-        require: true,
+        required: true,
         minlength: 6
     },
     tokens: [{
