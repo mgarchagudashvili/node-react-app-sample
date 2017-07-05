@@ -15,7 +15,6 @@ module.exports = {
             error,
             result: 'failed'
         };
-        console.log(response);
         res.status(code).send(response);
     }
 };
