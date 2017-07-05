@@ -10,9 +10,9 @@ npm install
 npm start
 
 ```
-It will start webpack webpack-dev-server on port 3333
+By default, it will serve the app on port 3333, go to [http://localhost:3333](http://localhost:3333) to launch it. 
 
-Additionally you need to start mongoDB and Api server
+Additionally you need to start mongoDB and Api server.
 
 ```
 mongo
