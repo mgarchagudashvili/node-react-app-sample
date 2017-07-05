@@ -4,8 +4,6 @@ const { success, fail } = require('./../util/response');
 const { generatePassword } = require('./../util/helper');
 
 module.exports = {
-    // @todo: update to async await
-    // @todo: use json schema validator
     async login (req, res) {
         try {
             const body = _.pick(req.body, ['email', 'password']);
@@ -17,7 +15,7 @@ module.exports = {
             }
 
             const token = await user.generateAuthToken();
-            user.addLogin();
+            await user.addLogin();
 
             res.header('x-auth', token);
             return success(res);
@@ -28,21 +26,25 @@ module.exports = {
     },
 
     // @todo: send email
-    forgotPassword (req, res) {
-        const body = _.pick(req.body, ['email']);
+    async forgotPassword (req, res) {
+        try {
+            const body = _.pick(req.body, ['email']);
 
-        User.findOne({ email: body.email })
-            .then((user) => {
-                if (user) {
-                    const password = generatePassword();
-                    return user.updatePassword(password);
-                }
+            const user = await User.findOne({ email: body.email });
+
+            if (!user) {
                 return fail(res, 'not_found', 404);
-            }).then(() => {
-                return success(res);
-            }).catch((e) => {
-                return fail(res, e);
-            });
+            }
+
+            const password = generatePassword();
+
+            await user.updatePassword(password);
+
+            return success(res);
+        }
+        catch (e) {
+            return fail(res, e);
+        }
     },
 
     // @todo: send email
