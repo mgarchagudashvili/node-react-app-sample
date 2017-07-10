@@ -68,7 +68,7 @@ module.exports = {
             return success(res, user);
         }
         catch (e) {
-            return fail(res, e);
+            return fail(res, e, 400);
         }
     }
 };
