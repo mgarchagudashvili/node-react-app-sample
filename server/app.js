@@ -1,11 +1,12 @@
 'use strict';
 
-const config = require('./config/index');
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
+
+const config = require('./config');
 const router = require('./src/router');
 
 const app = express();
@@ -36,3 +37,5 @@ app.use((req, res) => {
 app.listen(config.PORT, () => {
     console.log(`Listening on port ${config.PORT}`);
 });
+
+module.exports = { app };
