@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/api';
 
 class UserView extends Component {
-    componentDidMount() {
+    componentDidMount () {
         this.props.getUser(this.props.params.id);
     }
 
@@ -20,9 +20,9 @@ class UserView extends Component {
             );
         });
 
-    };
+    }
 
-    render() {
+    render () {
         const { user } = this.props;
         return (
             <div className="content-block">
@@ -35,7 +35,7 @@ class UserView extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return { user: state.auth.user };
 }
 

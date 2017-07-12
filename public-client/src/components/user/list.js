@@ -13,7 +13,6 @@ class UserList extends Component {
         }
 
         return users.map((user) => {
-            console.log(user._id)
             return (
                 <li key={ user._id }>
                     <a href={'/users/' + user._id}>
@@ -22,11 +21,10 @@ class UserList extends Component {
                 </li>
             );
         });
+    }
 
-    };
-    render() {
-        let { users } = this.props;
-        console.log(this.props)
+    render () {
+        const { users } = this.props;
 
         return (
             <div className="content-block">
@@ -38,7 +36,7 @@ class UserList extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         users: state.auth.users
     };

@@ -3,11 +3,11 @@ import { reduxForm } from 'redux-form';
 import * as actions from './../../actions/api';
 
 class Login extends Component {
-    handleFormSubmit({ email, password }) {
+    handleFormSubmit ({ email, password }) {
         this.props.loginUser({ email, password });
     }
 
-    renderError() {
+    renderError () {
         if (this.props.errorMessage) {
             return (
                 <div className="alert alert-danger">
@@ -17,8 +17,8 @@ class Login extends Component {
         }
     }
 
-    render() {
-        const { handleSubmit, fields: { email, password }} = this.props;
+    render () {
+        const { handleSubmit, fields: { email, password } } = this.props;
         return (
             <div className="row">
                 <form onSubmit={ handleSubmit(this.handleFormSubmit.bind(this)) } className="form-group">
@@ -37,15 +37,15 @@ class Login extends Component {
                     </button>
                 </form>
             </div>
-        )
+        );
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return { errorMessage: state.auth.error };
 }
 
 export default reduxForm({
     form: 'login',
-    fields:  ['email', 'password']
+    fields: ['email', 'password']
 }, mapStateToProps, actions)(Login);

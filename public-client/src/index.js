@@ -14,7 +14,7 @@ import UserList from './components/user/list';
 import UserView from './components/user/view';
 import LogOut from './components/user/logout';
 import NotFound from './components/error-404';
-import AuthMiddleware from './components/auth/authMiddleware';
+import authMiddleware from './components/auth/authMiddleware';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/status';
 
@@ -34,11 +34,11 @@ ReactDOM.render(
                 <IndexRoute component={Home} />
                 <Route path="login" component={Login} />
                 <Route path="register" component={Register} />
-                <Route path="logout" component={AuthMiddleware(LogOut)} />
-                <Route path="users" component={AuthMiddleware(UserList)} />
-                <Route path="users/:id" component={AuthMiddleware(UserView)} />
+                <Route path="logout" component={authMiddleware(LogOut)} />
+                <Route path="users" component={authMiddleware(UserList)} />
+                <Route path="users/:id" component={authMiddleware(UserView)} />
                 <Route path="*" component={NotFound} />
             </Route>
         </Router>
-    </Provider>, document.querySelector('.content')
+    </Provider>, document.querySelector('#app')
 );

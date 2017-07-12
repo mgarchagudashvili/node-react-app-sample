@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/api';
 
 class Logout extends Component {
-    componentWillMount() {
+    componentWillMount () {
         this.props.logoutUser();
     }
 
-    render() {
+    render () {
         return (
             <div className="content-block">
                 Come back soon

@@ -3,11 +3,11 @@ import { reduxForm } from 'redux-form';
 import * as actions from '../../actions/api';
 
 class Register extends Component {
-    handleFormSubmit(formProps) {
+    handleFormSubmit (formProps) {
         this.props.registerUser(formProps);
     }
 
-    renderError() {
+    renderError () {
         if (this.props.errorMessage) {
             return (
                 <div className="alert alert-danger">
@@ -18,7 +18,7 @@ class Register extends Component {
     }
 
     render() {
-        const { handleSubmit, fields: { email, password, confirmPassword }} = this.props;
+        const { handleSubmit, fields: { email, password, confirmPassword } } = this.props;
 
         return (
             <div className="row">
@@ -47,7 +47,7 @@ class Register extends Component {
     }
 }
 
-function validate(formProps) {
+function validate (formProps) {
     const errors = {};
 
     if (!formProps.email) {
@@ -69,7 +69,7 @@ function validate(formProps) {
     return errors;
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return { errorMessage: state.auth.error };
 }
 
